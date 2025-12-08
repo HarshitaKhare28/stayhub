@@ -75,7 +75,7 @@ export default function BookingsPage() {
                   </div>
                   <div className="text-right">
                     <p className="text-3xl font-bold text-blue-600">
-                      ${booking.totalPrice}
+                      ₹{booking.totalPrice.toLocaleString('en-IN')}
                     </p>
                     <p className="text-sm text-gray-600">Total Price</p>
                     <span className="inline-block mt-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">

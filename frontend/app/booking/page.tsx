@@ -79,8 +79,8 @@ function BookingContent() {
 
   const calculateTotal = () => {
     const roomCost = pricePerNight * nights * parseInt(formData.rooms);
-    const mealCost = formData.mealPreference === 'veg' ? 20 * nights : 
-                     formData.mealPreference === 'nonveg' ? 30 * nights : 0;
+    const mealCost = formData.mealPreference === 'veg' ? 1500 * nights : 
+                     formData.mealPreference === 'nonveg' ? 2500 * nights : 0;
     return roomCost + mealCost;
   };
 
@@ -146,7 +146,7 @@ function BookingContent() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 98765 43210"
                   />
                 </div>
 
@@ -237,7 +237,7 @@ function BookingContent() {
                       />
                       <div>
                         <div className="font-semibold text-gray-900">🥗 Vegetarian</div>
-                        <div className="text-sm text-gray-600">+$20/night</div>
+                        <div className="text-sm text-gray-600">+₹1500/night</div>
                       </div>
                     </label>
 
@@ -252,7 +252,7 @@ function BookingContent() {
                       />
                       <div>
                         <div className="font-semibold text-gray-900">🍗 Non-Vegetarian</div>
-                        <div className="text-sm text-gray-600">+$30/night</div>
+                        <div className="text-sm text-gray-600">+₹2500/night</div>
                       </div>
                     </label>
                   </div>
@@ -319,11 +319,11 @@ function BookingContent() {
               <div className="border-t border-gray-200 mt-4 pt-4 space-y-2">
                 <div className="flex justify-between text-gray-700">
                   <span>Price per night:</span>
-                  <span className="font-semibold">${pricePerNight}</span>
+                  <span className="font-semibold">₹{pricePerNight}</span>
                 </div>
                 <div className="flex justify-between text-gray-700">
                   <span>Room cost ({nights} nights × {formData.rooms} room{parseInt(formData.rooms) > 1 ? 's' : ''}):</span>
-                  <span className="font-semibold">${pricePerNight * nights * parseInt(formData.rooms)}</span>
+                  <span className="font-semibold">₹{pricePerNight * nights * parseInt(formData.rooms)}</span>
                 </div>
                 {formData.mealPreference !== 'none' && (
                   <div className="flex justify-between text-gray-700">
@@ -331,7 +331,7 @@ function BookingContent() {
                       Meals ({formData.mealPreference === 'veg' ? 'Vegetarian' : 'Non-Veg'}):
                     </span>
                     <span className="font-semibold">
-                      ${formData.mealPreference === 'veg' ? 20 * nights : 30 * nights}
+                      ₹{formData.mealPreference === 'veg' ? 1500 * nights : 2500 * nights}
                     </span>
                   </div>
                 )}
@@ -341,7 +341,7 @@ function BookingContent() {
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold text-gray-900">Total:</span>
                   <span className="text-2xl font-bold text-blue-600">
-                    ${calculateTotal()}
+                    ₹{calculateTotal()}
                   </span>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">Includes all taxes and fees</p>

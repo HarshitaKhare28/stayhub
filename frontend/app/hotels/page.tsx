@@ -27,7 +27,7 @@ function HotelsContent() {
 
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [filteredHotels, setFilteredHotels] = useState<Hotel[]>([]);
-  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [priceRange, setPriceRange] = useState([0, 50000]);
   const [minRating, setMinRating] = useState(0);
 
   useEffect(() => {
@@ -36,66 +36,66 @@ function HotelsContent() {
       {
         id: 1,
         name: 'Grand Plaza Hotel',
-        location: location || 'New York',
-        price: 250,
+        location: location || 'Mumbai',
+        price: 20000,
         rating: 4.8,
         reviews: 342,
-        image: '🏨',
+        image: '/images/rooms/indoor-design-luxury-resort.jpg',
         amenities: ['WiFi', 'Pool', 'Spa', 'Restaurant', 'Gym'],
         description: 'Luxury hotel in the heart of the city with stunning views',
       },
       {
         id: 2,
         name: 'Sunset Beach Resort',
-        location: location || 'New York',
-        price: 180,
+        location: location || 'Goa',
+        price: 15000,
         rating: 4.6,
         reviews: 256,
-        image: '🏖️',
+        image: '/images/rooms/modern-studio-apartment-design-with-bedroom-living-space.jpg',
         amenities: ['WiFi', 'Beach Access', 'Pool', 'Restaurant'],
         description: 'Beachfront resort perfect for a relaxing getaway',
       },
       {
         id: 3,
         name: 'City Center Inn',
-        location: location || 'New York',
-        price: 120,
+        location: location || 'Delhi',
+        price: 10000,
         rating: 4.3,
         reviews: 189,
-        image: '🏢',
+        image: '/images/rooms/vojtech-bruzek-Yrxr3bsPdS0-unsplash.jpg',
         amenities: ['WiFi', 'Parking', 'Breakfast'],
         description: 'Comfortable accommodation in downtown area',
       },
       {
         id: 4,
         name: 'Mountain View Lodge',
-        location: location || 'New York',
-        price: 200,
+        location: location || 'Shimla',
+        price: 16000,
         rating: 4.7,
         reviews: 298,
-        image: '⛰️',
+        image: '/images/rooms/markus-spiske-g5ZIXjzRGds-unsplash.jpg',
         amenities: ['WiFi', 'Mountain View', 'Restaurant', 'Fireplace'],
         description: 'Cozy lodge with breathtaking mountain scenery',
       },
       {
         id: 5,
         name: 'Royal Palace Hotel',
-        location: location || 'New York',
-        price: 350,
+        location: location || 'Jaipur',
+        price: 29000,
         rating: 4.9,
         reviews: 428,
-        image: '👑',
+        image: '/images/rooms/indoor-design-luxury-resort.jpg',
         amenities: ['WiFi', 'Spa', 'Pool', 'Fine Dining', 'Concierge'],
         description: 'Five-star luxury with world-class amenities',
       },
       {
         id: 6,
         name: 'Budget Comfort Suites',
-        location: location || 'New York',
-        price: 80,
+        location: location || 'Bangalore',
+        price: 6500,
         rating: 4.1,
         reviews: 156,
-        image: '🛏️',
+        image: '/images/rooms/vojtech-bruzek-Yrxr3bsPdS0-unsplash.jpg',
         amenities: ['WiFi', 'Parking', 'Breakfast'],
         description: 'Affordable and comfortable rooms for budget travelers',
       },
@@ -146,13 +146,14 @@ function HotelsContent() {
                   <input
                     type="range"
                     min="0"
-                    max="1000"
+                    max="50000"
+                    step="1000"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
                     className="w-full"
                   />
                   <p className="text-sm text-gray-600">
-                    $0 - ${priceRange[1]} per night
+                    ₹0 - ₹{priceRange[1].toLocaleString('en-IN')} per night
                   </p>
                 </div>
               </div>
@@ -176,7 +177,7 @@ function HotelsContent() {
 
               <button
                 onClick={() => {
-                  setPriceRange([0, 1000]);
+                  setPriceRange([0, 50000]);
                   setMinRating(0);
                 }}
                 className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition-colors"
@@ -200,8 +201,7 @@ function HotelsContent() {
                 >
                   <div className="flex flex-col md:flex-row">
                     {/* Hotel Image */}
-                    <div className="md:w-64 h-48 md:h-auto bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-7xl">
-                      {hotel.image}
+                    <div className="md:w-64 h-48 md:h-auto bg-cover bg-center" style={{backgroundImage: `url(${hotel.image})`}}>
                     </div>
 
                     {/* Hotel Details */}
@@ -239,7 +239,7 @@ function HotelsContent() {
                       <div className="flex justify-between items-center">
                         <div>
                           <p className="text-3xl font-bold text-blue-600">
-                            ${hotel.price}
+                            ₹{hotel.price.toLocaleString('en-IN')}
                           </p>
                           <p className="text-sm text-gray-600">per night</p>
                         </div>

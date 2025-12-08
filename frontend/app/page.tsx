@@ -18,19 +18,25 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Find Your Perfect Stay
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
-              Discover amazing hotels, resorts, and accommodations worldwide
-            </p>
+      <section className="relative h-[600px] bg-blue-100">
+        <div className="absolute inset-0 bg-slate-700 bg-opacity-80">
+        <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage: 'url(/images/bgplaceholder/full-shot-smiley-family-with-baggage.jpg)'}}></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center items-center text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+            Find Your Perfect Stay
+          </h1>
+          <p className="text-xl md:text-2xl text-white drop-shadow-lg">
+            Discover amazing hotels, resorts, and accommodations worldwide
+          </p>
           </div>
+        </div>
+      </section>
 
-          {/* Search Bar */}
-          <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-5xl mx-auto">
+      {/* Search Bar Section */}
+      <section className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 -mt-24 relative z-10">
             <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-2">
                 <label className="block text-gray-700 text-sm font-semibold mb-2">
@@ -111,21 +117,20 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { name: 'New York', hotels: '250+ Hotels', image: '🗽' },
-              { name: 'Paris', hotels: '180+ Hotels', image: '🗼' },
-              { name: 'Tokyo', hotels: '320+ Hotels', image: '🗾' },
-              { name: 'London', hotels: '200+ Hotels', image: '🏰' },
-              { name: 'Dubai', hotels: '150+ Hotels', image: '🏙️' },
-              { name: 'Singapore', hotels: '120+ Hotels', image: '🌆' },
-              { name: 'Barcelona', hotels: '140+ Hotels', image: '⛱️' },
-              { name: 'Rome', hotels: '160+ Hotels', image: '🏛️' },
+              { name: 'Mumbai', hotels: '250+ Hotels', image: '/images/hoteloutskirt/hotel-nevada-usa.jpg' },
+              { name: 'Delhi', hotels: '180+ Hotels', image: '/images/hoteloutskirt/bilderboken-rlwE8f8anOc-unsplash.jpg' },
+              { name: 'Bangalore', hotels: '320+ Hotels', image: '/images/hoteloutskirt/christian-lambert-vmIWr0NnpCQ-unsplash.jpg' },
+              { name: 'Goa', hotels: '200+ Hotels', image: '/images/hoteloutskirt/sara-dubler-Koei_7yYtIo-unsplash.jpg' },
+              { name: 'Jaipur', hotels: '150+ Hotels', image: '/images/hoteloutskirt/building-night.jpg' },
+              { name: 'Udaipur', hotels: '120+ Hotels', image: '/images/hoteloutskirt/miami.jpg' },
+              { name: 'Kerala', hotels: '140+ Hotels', image: '/images/hoteloutskirt/arkady-lukashov-ysN7dkne160-unsplash.jpg' },
+              { name: 'Shimla', hotels: '160+ Hotels', image: '/images/hoteloutskirt/valeriia-bugaiova-_pPHgeHz1uk-unsplash.jpg' },
             ].map((dest) => (
               <div
                 key={dest.name}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer overflow-hidden group"
               >
-                <div className="h-40 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform">
-                  {dest.image}
+                <div className="h-40 bg-cover bg-center group-hover:scale-110 transition-transform" style={{backgroundImage: `url(${dest.image})`}}>
                 </div>
                 <div className="p-4">
                   <h3 className="text-xl font-bold text-gray-900">{dest.name}</h3>
